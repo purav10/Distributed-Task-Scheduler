@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace SchedulerApi.Models
 {
-    public class Task
+    public class Tasks
     {
         [BsonId]
         [BsonRepresentation(BsonType.String)]

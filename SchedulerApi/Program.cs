@@ -1,20 +1,16 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-using SchedulerApi;
+using SchedulerApi.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Existing code
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddSingleton<MongoDbContext>();
 var app = builder.Build();
 
-// Temporary test
-MongoTest.TestConnection();
+// // Temporary test
+// MongoTest.TestConnection();
 
-// Existing code
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
