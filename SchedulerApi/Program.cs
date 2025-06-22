@@ -1,16 +1,21 @@
 using SchedulerApi.Data;
+using SchedulerApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Add services to the container.
 builder.Services.AddSingleton<MongoDbContext>();
+builder.Services.AddSingleton<TasksService>();
+builder.Services.AddSingleton<NodeService>();
+builder.Services.AddSingleton<GraphsService>();
+
 var app = builder.Build();
 
-// // Temporary test
-// MongoTest.TestConnection();
-
+// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
